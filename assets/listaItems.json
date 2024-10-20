@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "nombre": "Faro Delantero Grand Cherokee 2005/2007 RH",
+    "precio": 124.57,
+    "imagen": "https://jepimportaciones.com.ec/114974-large_default/faro-delantero-ford-f-150-2015-2017-lh.jpg",
+    "descripcion": "Faro delantero derecho para Jeep Grand Cherokee modelos 2005 a 2007.",
+    "marca": "JEEP",
+    "modelo": "GRAND CHEROKEE",
+    "años": [2005, 2006, 2007],
+    "categoria": "ILUMINACION",
+    "subcategoria": "FARO DELANTERO"
+  },
+  {
+    "id": 2,
+    "nombre": "Faro Delantero Grand Cherokee 2005/2007 LH",
+    "precio": 124.57,
+    "imagen": "https://repuestos247.llantas247.com/img/p/1/3/13.jpg",
+    "descripcion": "Faro delantero izquierdo para Jeep Grand Cherokee modelos 2005 a 2007.",
+    "marca": "JEEP",
+    "modelo": "GRAND CHEROKEE",
+    "años": [2005, 2006, 2007],
+    "categoria": "ILUMINACION",
+    "subcategoria": "FARO DELANTERO"
+  },
+  {
+    "id": 3,
+    "nombre": "Faro Delantero Cherokee 93/97 RH",
+    "precio": 49.71,
+    "imagen": "https://repuestos247.llantas247.com/img/p/1/4/14.jpg",
+    "descripcion": "Faro delantero derecho para Jeep Cherokee modelos 1993 a 1997.",
+    "marca": "JEEP",
+    "modelo": "CHEROKEE",
+    "años": [1993, 1994, 1995, 1996, 1997],
+    "categoria": "ILUMINACION",
+    "subcategoria": "FARO DELANTERO"
+  },
+  {
+    "id": 4,
+    "nombre": "Faro Delantero Cherokee 93/97 LH",
+    "precio": 49.71,
+    "imagen": "https://repuestos247.llantas247.com/img/p/1/5/15.jpg",
+    "descripcion": "Faro delantero izquierdo para Jeep Cherokee modelos 1993 a 1997.",
+    "marca": "JEEP",
+    "modelo": "CHEROKEE",
+    "años": [1993, 1994, 1995, 1996, 1997],
+    "categoria": "ILUMINACION",
+    "subcategoria": "FARO DELANTERO"
+  },
+  {
+    "id": 5,
+    "nombre": "Faro Delantero Kia Sportage GT Line LED 2017/ LH",
+    "precio": 307.53,
+    "imagen": "https://repuestos247.llantas247.com/img/p/4/5/45.jpg",
+    "descripcion": "Faro delantero izquierdo con tecnología LED para Kia Sportage GT Line año 2017.",
+    "marca": "KIA",
+    "modelo": "SPORTAGE GT LINE",
+    "años": [2017],
+    "categoria": "ILUMINACION",
+    "subcategoria": "FARO DELANTERO"
+  },
+  {
+    "id": 6,
+    "nombre": "Capot Ford Escape 2013/",
+    "precio": 625.77,
+    "imagen": "https://repuestos247.llantas247.com/img/p/2/6/26.jpg",
+    "descripcion": "Capot para Ford Escape modelos a partir de 2013.",
+    "marca": "FORD",
+    "modelo": "ESCAPE",
+    "años": [2013],
+    "categoria": "CARROCERIA",
+    "subcategoria": "CAPOT"
+  },
+  {
+    "id": 7,
+    "nombre": "Direccional Mercedes Benz W202 C-Class 97/2000 LH",
+    "precio": 23.80,
+    "imagen": "https://repuestos247.llantas247.com/img/p/1/2/27.jpg",
+    "descripcion": "Direccional izquierda para Mercedes Benz W202 C-Class años 1997 a 2000.",
+    "marca": "MERCEDES BENZ",
+    "modelo": "W202 C-CLASS",
+    "años": [1997, 1998, 1999, 2000],
+    "categoria": "ILUMINACION",
+    "subcategoria": "DIRECCIONAL"
+  },
+  {
+    "id": 8,
+    "nombre": "Faro Niebla Jeep Grand Cherokee 2005/2007 RH",
+    "precio": 69.99,
+    "imagen": "https://repuestos247.llantas247.com/img/p/1/6/16.jpg",
+    "descripcion": "Faro de niebla derecho para Jeep Grand Cherokee modelos 2005 a 2007.",
+    "marca": "JEEP",
+    "modelo": "GRAND CHEROKEE",
+    "años": [2005, 2006, 2007],
+    "categoria": "ILUMINACION",
+    "subcategoria": "FARO DE NIEBLA"
+  },
+  {
+    "id": 9,
+    "nombre": "Faro Niebla Jeep Grand Cherokee 2005/2007 LH",
+    "precio": 69.99,
+    "imagen": "https://repuestos247.llantas247.com/img/p/1/7/17.jpg",
+    "descripcion": "Faro de niebla izquierdo para Jeep Grand Cherokee modelos 2005 a 2007.",
+    "marca": "JEEP",
+    "modelo": "GRAND CHEROKEE",
+    "años": [2005, 2006, 2007],
+    "categoria": "ILUMINACION",
+    "subcategoria": "FARO DE NIEBLA"
+  },
+  {
+    "id": 10,
+    "nombre": "Faro Delantero Toyota Hilux 2016/2020 RH",
+    "precio": 150.00,
+    "imagen": "https://repuestos247.llantas247.com/img/p/3/0/30.jpg",
+    "descripcion": "Faro delantero derecho para Toyota Hilux modelos 2016 a 2020.",
+    "marca": "TOYOTA",
+    "modelo": "HILUX",
+    "años": [2016, 2017, 2018, 2019, 2020],
+    "categoria": "ILUMINACION",
+    "subcategoria": "FARO DELANTERO"
+  }
+]
