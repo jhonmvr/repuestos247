@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../widgets/ListaProductos.dart'; // Importar ListaProductos
+import 'RegisterScreen.dart'; // Importa la pantalla de registro
+import 'LoginScreen.dart'; // Importa la pantalla de login
+import 'NosotrosScreen.dart'; // Importa la pantalla de "Nosotros"
+import 'ContactosScreen.dart'; // Importa la pantalla de "Contactos"
 
 class MainPage extends StatefulWidget {
   MainPage({Key? key, this.title}) : super(key: key);
@@ -20,9 +24,46 @@ class _MainPageState extends State<MainPage> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          IconButton(
+          // Aquí reemplazamos el IconButton por PopupMenuButton para mostrar el menú flotante
+          PopupMenuButton<String>(
             icon: Icon(Icons.sort, color: Colors.black54),
-            onPressed: () {},
+            onSelected: (String choice) {
+              switch (choice) {
+                case 'Registrar':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => RegisterScreen()),
+                  );
+                  break;
+                case 'Logear':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginScreen()),
+                  );
+                  break;
+                case 'Nosotros':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => NosotrosScreen()),
+                  );
+                  break;
+                case 'Contactos':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ContactosScreen()),
+                  );
+                  break;
+              }
+            },
+            itemBuilder: (BuildContext context) {
+              return {'Registrar', 'Logear', 'Nosotros', 'Contactos'}
+                  .map((String choice) {
+                return PopupMenuItem<String>(
+                  value: choice,
+                  child: Text(choice),
+                );
+              }).toList();
+            },
           ),
           CircleAvatar(
             radius: 40, // Tamaño del avatar
@@ -87,7 +128,9 @@ class _MainPageState extends State<MainPage> {
             Expanded(
               child: AnimatedSwitcher(
                 duration: Duration(milliseconds: 300),
-                child: isHomePageSelected ? ListaProductos() : ShoppingCartPage(),
+                child: isHomePageSelected
+                    ? ListaProductos() // Lista de productos
+                    : ShoppingCartPage(), // Página del carrito
               ),
             ),
           ],
