@@ -1,8 +1,8 @@
 [
   {"nombre": "ILUMINACION",
-    "imagen": "assets/logo_repuestos.png"
+    "imagen": "assets/catilum.jpg"
   },
   {"nombre": "CARROCERIA",
-    "imagen": "assets/logo_repuestos.png"
+    "imagen": "assets/catcarr.jpg"
   }
 ]
