@@ -17,25 +17,25 @@ class ForgotPasswordScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Text(
-                "Forgot your Password?",
+                "¿Olvidaste tu contraseña?",
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: 20),
               Text(
-                "Enter your registered mobile number to get the OTP",
+                "Ingresa tu número de celular registrado para recibir el OTP",
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 16),
               ),
               SizedBox(height: 20),
               TextFormField(
                 decoration: InputDecoration(
-                  labelText: 'Mobile Number',
+                  labelText: 'Número de celular',
                   border: OutlineInputBorder(),
                 ),
                 validator: (value) {
                   if (value == null || value.length != 10) {
-                    return 'Please enter a valid mobile number';
+                    return 'Por favor ingresa un número de celular válido';
                   }
                   return null;
                 },
@@ -57,9 +57,22 @@ class ForgotPasswordScreen extends StatelessWidget {
                   padding: EdgeInsets.symmetric(vertical: 16),
                 ),
                 child: Text(
-                  'Send OTP',
+                  'Enviar OTP',
                   style: TextStyle(fontSize: 16),
-
+                ),
+              ),
+              SizedBox(height: 10), // Espacio entre los botones
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context); // Regresa a la pantalla anterior
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.grey,
+                  padding: EdgeInsets.symmetric(vertical: 16),
+                ),
+                child: Text(
+                  'Cancelar',
+                  style: TextStyle(fontSize: 16),
                 ),
               ),
             ],

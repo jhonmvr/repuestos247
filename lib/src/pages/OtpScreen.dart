@@ -13,13 +13,13 @@ class OtpScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              "Confirm your OTP",
+              "Confirma tu OTP",
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 20),
             Text(
-              "Please wait as we are confirming the OTP",
+              "Espera mientras confirmamos el OTP",
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 16),
             ),
@@ -46,7 +46,21 @@ class OtpScreen extends StatelessWidget {
                 padding: EdgeInsets.symmetric(vertical: 16),
               ),
               child: Text(
-                'Verify',
+                'Verificar',
+                style: TextStyle(fontSize: 16),
+              ),
+            ),
+            SizedBox(height: 10), // Espacio entre los botones
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context); // Regresa a la pantalla anterior
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.grey,
+                padding: EdgeInsets.symmetric(vertical: 16),
+              ),
+              child: Text(
+                'Cancelar',
                 style: TextStyle(fontSize: 16),
               ),
             ),
