@@ -91,11 +91,11 @@ class _MainPageState extends State<MainPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                isHomePageSelected ? 'Our' : 'Shopping',
+                isHomePageSelected ? 'Nuestros' : 'Shopping',
                 style: TextStyle(fontSize: 27, fontWeight: FontWeight.w400),
               ),
               Text(
-                isHomePageSelected ? 'Products' : 'Cart',
+                isHomePageSelected ? 'Productos' : 'Cart',
                 style: TextStyle(fontSize: 27, fontWeight: FontWeight.w700),
               ),
             ],
@@ -143,11 +143,11 @@ class _MainPageState extends State<MainPage> {
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'Home',
+            label: 'Inicio',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_cart),
-            label: 'Cart',
+            label: 'Carrito',
           ),
         ],
       ),

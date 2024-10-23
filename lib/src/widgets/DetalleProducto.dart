@@ -104,7 +104,7 @@ class DetalleProducto extends StatelessWidget {
                         ),
                       ),
                       child: Text(
-                        "ADD TO CART",
+                        "AGREGAR AL CARRITO",
                         style: TextStyle(color: Colors.white, fontSize: 16),
                       ),
                     ),
@@ -124,7 +124,7 @@ class DetalleProducto extends StatelessWidget {
                         ),
                       ),
                       child: Text(
-                        "AVAILABLE AT SHOPS",
+                        "TIENDA DISPONIBLE",
                         style: TextStyle(color: Colors.white, fontSize: 16),
                       ),
                     ),

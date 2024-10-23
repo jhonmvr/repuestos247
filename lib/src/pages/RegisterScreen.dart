@@ -1,73 +1,116 @@
 import 'package:flutter/material.dart';
 
 class RegisterScreen extends StatelessWidget {
-  final _formKey = GlobalKey<FormState>();
-  String email = '', password = '';
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Regístrese con Nosotros'),
+        backgroundColor: Colors.redAccent,
+      ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Text(
-                "Glad To Meet You",
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.center,
+        padding: EdgeInsets.all(16.0),
+        child: ListView(
+          children: [
+            Text(
+              'SOLICITUD DE REGISTRO',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: const Color.fromARGB(255, 9, 83, 221),
               ),
-              SizedBox(height: 20),
-              TextFormField(
-                decoration: InputDecoration(
-                  labelText: 'Email',
-                  border: OutlineInputBorder(),
-                ),
-                validator: (value) {
-                  if (value == null || !value.contains('@')) {
-                    return 'Please enter a valid email';
-                  }
-                  return null;
-                },
-                onSaved: (value) => email = value!,
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 16),
+            // Campo para el Asunto
+            buildLabel('Asunto'),
+            DropdownButtonFormField<String>(
+              items: [
+                DropdownMenuItem(
+                    child: Text('Servicio al cliente'),
+                    value: 'Servicio al cliente'),
+                DropdownMenuItem(
+                    child: Text('Soporte técnico'), value: 'Soporte técnico'),
+                DropdownMenuItem(child: Text('Ventas'), value: 'Ventas'),
+              ],
+              onChanged: (value) {},
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
               ),
-              SizedBox(height: 20),
-              TextFormField(
-                decoration: InputDecoration(
-                  labelText: 'Password',
-                  border: OutlineInputBorder(),
-                ),
-                obscureText: true,
-                validator: (value) {
-                  if (value == null || value.length < 6) {
-                    return 'Password must be at least 6 characters long';
-                  }
-                  return null;
-                },
-                onSaved: (value) => password = value!,
+            ),
+            SizedBox(height: 16),
+            // Campo para el correo electrónico
+            buildLabel('Dirección de correo electrónico'),
+            TextFormField(
+              decoration: InputDecoration(
+                hintText: 'su@email.com',
+                border: OutlineInputBorder(),
               ),
-              SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    _formKey.currentState!.save();
-                    // Logica para registrar el usuario
-                  }
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.red,
-                  padding: EdgeInsets.symmetric(vertical: 16),
+              keyboardType: TextInputType.emailAddress,
+            ),
+            SizedBox(height: 16),
+            // Campo para el archivo adjunto
+            buildLabel('Archivo adjunto'),
+            Row(
+              children: [
+                Expanded(
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      hintText: 'opcional',
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
                 ),
-                child: Text(
-                  'Register',
-                  style: TextStyle(fontSize: 16),
+                SizedBox(width: 8),
+                ElevatedButton(
+                  onPressed: () {
+                    // Acción para seleccionar archivo
+                  },
+                  child: Text('SELECCIONAR ARCHIVO'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor:
+                        Colors.black, // Cambia "primary" por "backgroundColor"
+                  ),
                 ),
+              ],
+            ),
+            SizedBox(height: 16),
+            // Campo para el mensaje
+            buildLabel('Mensaje'),
+            TextFormField(
+              decoration: InputDecoration(
+                hintText: '¿Cómo podemos ayudarle?',
+                border: OutlineInputBorder(),
               ),
-            ],
-          ),
+              maxLines: 4,
+            ),
+            SizedBox(height: 16),
+            // Botón de enviar
+            ElevatedButton(
+              onPressed: () {
+                // Acción de enviar el formulario
+              },
+              child: Text('ENVIAR'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor:
+                    Colors.redAccent, // Cambia "primary" por "backgroundColor"
+                padding: EdgeInsets.symmetric(vertical: 15.0),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget buildLabel(String text) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8.0),
+      child: Text(
+        text,
+        style: TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.bold,
         ),
       ),
     );
