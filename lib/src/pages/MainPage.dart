@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:project/src/widgets/ListaCategorias.dart';
 import '../widgets/ListaProductos.dart'; // Importar ListaProductos
 import 'RegisterScreen.dart'; // Importa la pantalla de registro
 import 'LoginScreen.dart'; // Importa la pantalla de login
@@ -129,7 +130,7 @@ class _MainPageState extends State<MainPage> {
               child: AnimatedSwitcher(
                 duration: Duration(milliseconds: 300),
                 child: isHomePageSelected
-                    ? ListaProductos() // Lista de productos
+                    ? ListaCategorias() // Lista de productos
                     : ShoppingCartPage(), // Página del carrito
               ),
             ),

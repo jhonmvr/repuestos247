@@ -1,48 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:project/src/model/mockups/ApiFake.dart';
 import 'package:project/src/widgets/DetalleProducto.dart';
-class ListaProductos extends StatefulWidget {
-  final Map<String, dynamic> categoria;
-
-  ListaProductos({required this.categoria});
-
+import 'package:project/src/widgets/ListaProductos.dart';
+class ListaCategorias extends StatefulWidget {
   @override
-  _ListaProductosState createState() => _ListaProductosState();
+  _ListaCategoriasState createState() => _ListaCategoriasState();
+
 }
 
-class _ListaProductosState extends State<ListaProductos> {
+class _ListaCategoriasState extends State<ListaCategorias> {
   final ApiFake apiFake = ApiFake();
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<Map<String, dynamic>>>(
-      future: apiFake.fetchProductos(widget.categoria['Nombre']),
+      future: apiFake.fetchCategorias(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(child: CircularProgressIndicator());
         } else if (snapshot.hasError) {
           return Center(child: Text('Error: ${snapshot.error}'));
         } else if (snapshot.hasData) {
-          List<Map<String, dynamic>> productos = snapshot.data!;
+          List<Map<String, dynamic>> Categorias = snapshot.data!;
           return Padding(
             padding: const EdgeInsets.all(10.0),
             child: GridView.builder(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2, // Número de productos por fila
+                crossAxisCount: 2, // Número de Categorias por fila
                 crossAxisSpacing: 10.0,
                 mainAxisSpacing: 10.0,
                 childAspectRatio: 0.75, // Proporción entre ancho y alto
               ),
-              itemCount: productos.length,
+              itemCount: Categorias.length,
               itemBuilder: (context, index) {
-                var producto = productos[index];
+                var categoria = Categorias[index];
                 return GestureDetector(
                   onTap: () {
                     // Navegar a la pantalla de detalles cuando se selecciona una tarjeta
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => DetalleProducto(producto: producto),
+                        builder: (context) => ListaProductos(categoria: categoria),
                       ),
                     );
                   },
@@ -59,7 +57,7 @@ class _ListaProductosState extends State<ListaProductos> {
                           Expanded(
                             child: Center(
                               child: Image.network(
-                                producto['imagen'],
+                                categoria['imagen'],
                                 fit: BoxFit.contain,
                                 height: 100, // Tamaño ajustado para la imagen
                               ),
@@ -67,7 +65,7 @@ class _ListaProductosState extends State<ListaProductos> {
                           ),
                           SizedBox(height: 10),
                           Text(
-                            producto['nombre'],
+                            categoria['nombre'],
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.bold,
@@ -76,36 +74,6 @@ class _ListaProductosState extends State<ListaProductos> {
                             overflow: TextOverflow.ellipsis,
                           ),
                           SizedBox(height: 8),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                '\$${producto['precio'].toString()}',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.redAccent,
-                                ),
-                              ),
-                              Container(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 8.0,
-                                  vertical: 4.0,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: Colors.orangeAccent,
-                                  borderRadius: BorderRadius.circular(12.0),
-                                ),
-                                child: Text(
-                                  '${producto['descuento'].toString()}% OFF',
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
                         ],
                       ),
                     ),
@@ -115,7 +83,7 @@ class _ListaProductosState extends State<ListaProductos> {
             ),
           );
         } else {
-          return Center(child: Text('No hay productos disponibles'));
+          return Center(child: Text('No hay Categorias disponibles'));
         }
       },
     );
