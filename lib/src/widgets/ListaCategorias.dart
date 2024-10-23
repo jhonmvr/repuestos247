@@ -40,7 +40,7 @@ class _ListaCategoriasState extends State<ListaCategorias> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ListaProductos(categoria: categoria),
+                        builder: (context) => ListaProductos(categoria: categoria['nombre']),
                       ),
                     );
                   },

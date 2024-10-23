@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:project/src/widgets/ListaCategorias.dart';
 import '../widgets/ListaProductos.dart'; // Importar ListaProductos
+import '../widgets/ShoppingCartPage.dart';
 import 'RegisterScreen.dart'; // Importa la pantalla de registro
 import 'LoginScreen.dart'; // Importa la pantalla de login
 import 'NosotrosScreen.dart'; // Importa la pantalla de "Nosotros"
@@ -155,11 +156,3 @@ class _MainPageState extends State<MainPage> {
   }
 }
 
-class ShoppingCartPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('Shopping Cart'),
-    );
-  }
-}

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project/src/model/mockups/ApiFake.dart';
 import 'package:project/src/widgets/DetalleProducto.dart';
 class ListaProductos extends StatefulWidget {
-  final Map<String, dynamic> categoria;
+  final String categoria;
 
   ListaProductos({required this.categoria});
 
@@ -15,8 +15,13 @@ class _ListaProductosState extends State<ListaProductos> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<Map<String, dynamic>>>(
-      future: apiFake.fetchProductos(widget.categoria['Nombre']),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Productos'),
+        backgroundColor: Colors.red,
+      ),
+      body: FutureBuilder<List<Map<String, dynamic>>>(
+      future: apiFake.fetchProductos(widget.categoria),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(child: CircularProgressIndicator());
@@ -118,6 +123,7 @@ class _ListaProductosState extends State<ListaProductos> {
           return Center(child: Text('No hay productos disponibles'));
         }
       },
-    );
+    ),);
+
   }
 }
