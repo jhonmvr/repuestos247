@@ -56,7 +56,7 @@ class _ListaCategoriasState extends State<ListaCategorias> {
                         children: [
                           Expanded(
                             child: Center(
-                              child: Image.network(
+                              child: Image.asset(
                                 categoria['imagen'],
                                 fit: BoxFit.contain,
                                 height: 100, // Tamaño ajustado para la imagen

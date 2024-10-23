@@ -1,8 +1,8 @@
 [
   {"nombre": "ILUMINACION",
-    "imagen": "url/imagen"
+    "imagen": "assets/logo_repuestos.png"
   },
   {"nombre": "CARROCERIA",
-    "imagen": "url/imagen"
+    "imagen": "assets/logo_repuestos.png"
   }
 ]
