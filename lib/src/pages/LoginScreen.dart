@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:project/services/auth_service.dart';
 import 'dart:convert'; // Para manejar la serialización JSON
 import 'package:project/src/pages/WelcomeScreen.dart';
 
@@ -10,51 +11,19 @@ class LoginScreen extends StatelessWidget {
   // Método para iniciar sesión usando el API
   Future<void> _login(BuildContext context) async {
     try {
-      final String username = _emailController.text.trim();
-      final String password = _passwordController.text.trim();
-
-      // URL del endpoint del API
-      final String apiUrl = "http://localhost:8080/api/auth/login";
-
-      // Realizar la solicitud POST
-      final response = await http.post(
-        Uri.parse(apiUrl),
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: json.encode({
-          "username": username,
-          "password": password,
-        }),
-      );
-
-      if (response.statusCode == 200) {
-        // Inicio de sesión exitoso
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Inicio de sesión exitoso')),
-        );
-
-        // Navegar a la pantalla de bienvenida
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => WelcomeScreen()),
-        );
-      } else if (response.statusCode == 401) {
-        // Credenciales incorrectas
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Contraseña incorrecta')),
-        );
-      } else {
-        // Otros errores
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error inesperado: ${response.body}')),
-        );
-      }
-    } catch (e) {
-      // Manejo de errores generales
-      print('Error: ${e.toString()}');
+      final AuthService backendService = AuthService();
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error inesperado: ${e.toString()}')),
+        SnackBar(content: Text('Inicio de sesión exitoso')),
+      );
+      // Navegar a la pantalla de bienvenida
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => WelcomeScreen()),
+      );
+    } catch (e) {
+      // Credenciales incorrectas
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Contraseña incorrecta')),
       );
     }
   }

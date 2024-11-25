@@ -1,4 +1,4 @@
-/*import 'package:path/path.dart';
+import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../src/model/mockups/Product.dart';
@@ -85,4 +85,3 @@ class DatabaseService {
     await db.delete('products');
   }
 }
-*/

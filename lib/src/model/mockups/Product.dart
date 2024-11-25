@@ -2,14 +2,14 @@ class Product {
   final int id;
   final String name;
   final double price;
-  final String? image; // La imagen puede ser opcional
+  final String image; // La imagen puede ser opcional
   int quantity;
 
   Product({
     required this.id,
     required this.name,
     required this.price,
-    this.image,
+    required this.image,
     required this.quantity,
   });
 

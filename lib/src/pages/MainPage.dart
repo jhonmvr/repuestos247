@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:project/src/widgets/CartScreen.dart';
 import 'package:project/src/widgets/ListaCategorias.dart';
 import '../widgets/ListaProductos.dart'; // Importar ListaProductos
-import '../widgets/ShoppingCartPage.dart';
 import 'RegisterScreen.dart'; // Importa la pantalla de registro
 import 'LoginScreen.dart'; // Importa la pantalla de login
 import 'NosotrosScreen.dart'; // Importa la pantalla de "Nosotros"
 import 'ContactosScreen.dart'; // Importa la pantalla de "Contactos"
+import '../../services/sqlite_service.dart';
 
 class MainPage extends StatefulWidget {
   MainPage({Key? key, this.title}) : super(key: key);
@@ -19,6 +20,21 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   bool isHomePageSelected = true;
+  int cartItemCount = 0; // Contador de elementos en el carrito
+  final DatabaseService _databaseService = DatabaseService();
+
+  @override
+  void initState() {
+    super.initState();
+    _updateCartItemCount(); // Actualizar el contador al iniciar
+  }
+
+  Future<void> _updateCartItemCount() async {
+    final cartItems = await _databaseService.getProducts();
+    setState(() {
+      cartItemCount = cartItems.length; // Actualizar la cantidad de productos
+    });
+  }
 
   Widget _appBar() {
     return Padding(
@@ -26,7 +42,6 @@ class _MainPageState extends State<MainPage> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          // Aquí reemplazamos el IconButton por PopupMenuButton para mostrar el menú flotante
           PopupMenuButton<String>(
             icon: Icon(Icons.sort, color: Colors.black54),
             onSelected: (String choice) {
@@ -92,21 +107,16 @@ class _MainPageState extends State<MainPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                isHomePageSelected ? 'Nuestros' : 'Shopping',
+                isHomePageSelected ? 'Nuestros' : 'Carrito',
                 style: TextStyle(fontSize: 27, fontWeight: FontWeight.w400),
               ),
               Text(
-                isHomePageSelected ? 'Productos' : 'Cart',
+                isHomePageSelected ? 'Productos' : '',
                 style: TextStyle(fontSize: 27, fontWeight: FontWeight.w700),
               ),
             ],
           ),
-          Spacer(),
-          if (!isHomePageSelected)
-            IconButton(
-              icon: Icon(Icons.delete_outline, color: Colors.orange),
-              onPressed: () {},
-            ),
+
         ],
       ),
     );
@@ -114,8 +124,12 @@ class _MainPageState extends State<MainPage> {
 
   void onBottomIconPressed(int index) {
     setState(() {
-      isHomePageSelected = index == 0 || index == 1;
+      isHomePageSelected = index == 0;
     });
+    if (index == 1) {
+      // Actualizar el carrito cuando se selecciona el botón de carrito
+      _updateCartItemCount();
+    }
   }
 
   @override
@@ -132,7 +146,7 @@ class _MainPageState extends State<MainPage> {
                 duration: Duration(milliseconds: 300),
                 child: isHomePageSelected
                     ? ListaCategorias() // Lista de productos
-                    : ShoppingCartPage(), // Página del carrito
+                    : CartScreen(), // Página del carrito
               ),
             ),
           ],
@@ -141,13 +155,41 @@ class _MainPageState extends State<MainPage> {
       bottomNavigationBar: BottomNavigationBar(
         onTap: onBottomIconPressed,
         currentIndex: isHomePageSelected ? 0 : 1,
-        items: const [
+        items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Inicio',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
+            icon: Stack(
+              children: [
+                Icon(Icons.shopping_cart),
+                if (cartItemCount > 0) // Mostrar el contador si hay productos
+                  Positioned(
+                    right: 0,
+                    child: Container(
+                      padding: EdgeInsets.all(4),
+                      decoration: BoxDecoration(
+                        color: Colors.red,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      constraints: BoxConstraints(
+                        minWidth: 16,
+                        minHeight: 16,
+                      ),
+                      child: Text(
+                        '$cartItemCount',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+              ],
+            ),
             label: 'Carrito',
           ),
         ],
@@ -155,4 +197,3 @@ class _MainPageState extends State<MainPage> {
     );
   }
 }
-

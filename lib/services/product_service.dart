@@ -1,8 +1,9 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:project/src/config/conf.dart';
 
 class BackendService {
-  final String baseUrl = 'http://localhost:8080/api';
+  final String baseUrl = Conf.API_URL;
 
   // Get all products
   Future<List<dynamic>> getAllProducts() async {
@@ -53,6 +54,19 @@ class BackendService {
     final response = await http.delete(Uri.parse('$baseUrl/productos/$id'));
     if (response.statusCode != 204) {
       throw Exception('Failed to delete product with ID $id');
+    }
+  }
+
+
+  // Create a new product
+  Future<void> login(Map<String, dynamic> product) async {
+    final response = await http.post(
+      Uri.parse('$baseUrl/productos'),
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode(product),
+    );
+    if (response.statusCode != 200) {
+      throw Exception('Failed to create product');
     }
   }
 }
