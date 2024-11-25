@@ -37,6 +37,11 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter_svg: ^2.0.10+1
   font_awesome_flutter: ^10.1.0  # Añadir font_awesome_flutter aquí
+  firebase_core: ^3.8.0
+  firebase_auth: ^5.3.3
+  sqflite: ^2.4.0
+  path: ^1.9.0
+
 
 dev_dependencies:
   flutter_test:

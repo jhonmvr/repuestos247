@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "434832672873",
+    "project_id": "repuestos-24-7",
+    "storage_bucket": "repuestos-24-7.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:434832672873:android:b84ef504f7d3d68920baf8",
+        "android_client_info": {
+          "package_name": "com.repuestos.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNa7H_pzgpB2TjbTjqCdVkoUwxRGKPdNw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
